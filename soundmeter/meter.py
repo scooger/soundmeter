@@ -7,6 +7,7 @@ import wave
 import signal
 import six
 import subprocess
+import socket
 import sys
 import time
 import warnings
@@ -144,7 +145,7 @@ class Meter(object):
             sys.stdout.write('\r%10d  ' % rms)
             sys.stdout.flush()
             if self.log:
-                self.logging.info(rms)
+                self.logging.info(socket.gethostname() + ' ' + rms)
 
     def graceful(self):
         """Graceful stop so that the while loop in start() will stop after the
